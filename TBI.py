@@ -1,5 +1,4 @@
 # Library import
-
 import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
@@ -21,11 +20,8 @@ df = pd.read_csv('TBI.csv')
 
 # Variables
 y = df['outcome']
-
 num = df.loc[:, ['age', 'Hb', 'platelet', 'INR', 'aPTT', 'glucose', 'MLS', 'SDH', 'EDH']]
 cat = df.loc[:, ['GCS', 'motors', 'extracranial_injury', 'OP', 'pupil', '3rd_ventricle_or_basal_cistern', 'contusion', 'SAH', 'IVH']]
-
-
 num.columns = ['Age', 'Hb', 'Platelet', 'INR', 'aPTT', 'Glucose', 'MLS', 'SDH', 'EDH']
 cat.columns = ['GCS', 'Motor score of GCS', 'extracranial_injury', 'Operation', 'Pupil reflex', '3rd ventricle or Basal cistern', 'Contusion', 'SAH', 'IVH']
 
@@ -33,10 +29,8 @@ cat.columns = ['GCS', 'Motor score of GCS', 'extracranial_injury', 'Operation', 
 sc = StandardScaler()
 sc.fit(num)
 num_std = sc.transform(num)
-
 num_df = pd.DataFrame(num_std)
 num_df.columns = ['Age', 'Hb', 'Platelet', 'INR', 'aPTT', 'Glucose', 'MLS', 'SDH', 'EDH']
-
 X_std = pd.concat([num_df, cat], axis=1)
 X = pd.concat([num, cat], axis=1)
 
@@ -253,7 +247,6 @@ print('CRASH model specificity: {0:.4f}'.format(spec_crash))
 
 
 # ROC curve
-
 def roc_curve_and_score(y_test, pred_proba):
     fpr, tpr, _ = roc_curve(y_test.ravel(), pred_proba.ravel())
     roc_auc = roc_auc_score(y_test.ravel(), pred_proba.ravel())
