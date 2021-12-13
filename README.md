@@ -3,11 +3,12 @@
 ### Code used to develop the ML model
 TBI.py
 
-### Random forest model
+### Trained models
+#### Random forest
 rf.pkl
-### Support vector machine
+#### Support vector machine
 svm.pkl
-### Logistic regression
+#### Logistic regression
 lr.pkl
 
 
